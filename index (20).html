@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 9 Months Anniversary 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ff9eb5, #ffd6e0);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+      color: white;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.2s ease;
+    }
+    header p {
+      font-size: 1.2rem;
+      animation: fadeInUp 1.5s ease;
+    }
+    .counter {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      text-align: center;
+      min-width: 80px;
+    }
+    .pill span {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff5c8a;
+    }
+    .gallery {
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .message {
+      background: white;
+      padding: 40px 20px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 50px auto;
+      max-width: 800px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .message h2 {
+      margin-bottom: 15px;
+      color: #ff5c8a;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      font-size: 0.9rem;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity:0; transform:translateY(-20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      color: #ff5c8a;
+      animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+      from {transform: translateY(0);}
+      to {transform: translateY(-110vh);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Happy 9 Months Anniversary 💖</h1>
+    <p>Dari <b>23 November 2024</b> sampai hari ini, kita sudah bersama selama:</p>
+    <div class="counter" id="counter"></div>
+  </header>
+
+  <section class="gallery">
+    <img src="foto1.jpg" alt="Kenangan 1">
+    <img src="foto2.jpg" alt="Kenangan 2">
+    <img src="foto3.jpg" alt="Kenangan 3">
+    <img src="foto4.jpg" alt="Kenangan 4">
+  </section>
+
+  <section class="message">
+    <h2>Untuk Widia 🤍</h2>
+    <p>
+      Terima kasih sudah selalu ada, ketawa bareng, sedih bareng, dan jadi bagian penting di hidupku.  
+      Semoga kita terus bareng-bareng sampai selamanya 🤍✨
+    </p>
+  </section>
+
+  <footer>Made with ❤ khusus buat widia</footer>
+
+  <script>
+    // Counter
+    const start = new Date("2024-11-23T00:00:00");
+    const counter = document.getElementById("counter");
+    function updateCounter() {
+      const now = new Date();
+      let diff = now - start;
+      const sec = Math.floor(diff/1000)%60;
+      const min = Math.floor(diff/1000/60)%60;
+      const hr  = Math.floor(diff/1000/60/60)%24;
+      const days= Math.floor(diff/1000/60/60/24);
+      const months = Math.floor(days/30.4375);
+      const years = Math.floor(months/12);
+      const parts = [
+        {n: years, t: "Tahun"},
+        {n: months % 12, t: "Bulan"},
+        {n: days % 30, t: "Hari"},
+        {n: hr, t: "Jam"},
+        {n: min, t: "Menit"},
+        {n: sec, t: "Detik"}
+      ];
+      counter.innerHTML = parts.map(p => 
+        `<div class="pill"><span>${p.n}</span>${p.t}</div>`
+      ).join("");
+      requestAnimationFrame(updateCounter);
+    }
+    updateCounter();
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      heart.innerText = "💖";
+      document.body.appendChild(heart);
+      setTimeout(()=> heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
